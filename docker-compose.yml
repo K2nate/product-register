@@ -12,6 +12,7 @@ services:
       - '.:/product-register'
     environment:
       - 'DATABASE_PASSWORD=postgres'
+    entrypoint: ./wait-for-postgres.sh postgres 5432
     tty: true
     stdin_open: true
     depends_on:
@@ -26,3 +27,4 @@ services:
     environment:
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
